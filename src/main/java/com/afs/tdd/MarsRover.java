@@ -13,61 +13,53 @@ public class MarsRover {
         this.heading = heading;
     }
 
-    public void executeCommands(String commands){
+    public void executeCommands(String commands) {
         Arrays.asList(commands.split("")).
                 forEach(command -> this.executeCommand(command));
     }
 
     private void executeCommand(String command) {
-        if(command.equals("M")){
+        if (command.equals("M")) {
             move();
-        }
-        else if(command.equals("L")){
+        } else if (command.equals("L")) {
             turnLeft();
-        }
-        else if(command.equals("R")){
+        } else if (command.equals("R")) {
             turnRight();
         }
     }
 
     private void turnRight() {
-        if (heading == "N"){
+        if (heading.equals("N")) {
             heading = "E";
-        }
-        else if (heading == "S"){
+        } else if (heading.equals("S")) {
             heading = "W";
-        }
-        else if (heading == "E"){
+        } else if (heading.equals("E")) {
             heading = "S";
+        } else if (heading.equals("W")) {
+            heading = "N";
         }
     }
 
     private void turnLeft() {
-        if (heading == "N"){
+        if (heading.equals("N")) {
             heading = "W";
-        }
-        else if (heading == "S"){
+        } else if (heading.equals("S")) {
             heading = "E";
-        }
-        else if (heading == "E"){
+        } else if (heading.equals("E")) {
             heading = "N";
-        }
-        else if (heading == "W"){
+        } else if (heading.equals("W")) {
             heading = "S";
         }
     }
 
     public void move() {
-        if (heading == "N"){
+        if (heading.equals("N")) {
             locationY += 1;
-        }
-        else if (heading == "S"){
+        } else if (heading.equals("S")) {
             locationY -= 1;
-        }
-        else if (heading == "E"){
+        } else if (heading.equals("E")) {
             locationX += 1;
-        }
-        else if (heading == "W"){
+        } else if (heading.equals("W")) {
             locationX -= 1;
         }
     }
