@@ -1,8 +1,10 @@
 package com.afs.tdd;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DemoTest {
     @Test
@@ -184,7 +186,7 @@ class DemoTest {
         assertEquals(0, marsRover.getLocationY());
         assertEquals("N", marsRover.getHeading());
     }
-    
+
     @Test
     void should_x_0_y_0_heading_N_return_x_1_y_0_heading_N_given_MLMR() {
         //given
@@ -199,4 +201,18 @@ class DemoTest {
         assertEquals(1, marsRover.getLocationY());
         assertEquals("N", marsRover.getHeading());
     }
+
+    @Test
+    void should_throw_command_not_defined_exception_heading_N_when_execute_given_x_0_y_0_heading_N_command_R() {
+        //given
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+
+        //when
+        String command = "F";
+        marsRover.executeCommands(command);
+
+        //then
+        assertThrows(CommandNotDefinedException.class, () -> marsRover.executeCommand(command));
+    }
+
 }
