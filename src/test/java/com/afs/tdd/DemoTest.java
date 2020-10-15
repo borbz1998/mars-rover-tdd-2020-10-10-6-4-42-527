@@ -21,6 +21,21 @@ class DemoTest {
     }
 
     @Test
+    void should_x_0_y_0_heading_W_when_execute_given_x_0_y_0_heading_N_command_L() {
+        //given
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+
+        //when
+        String command = "L";
+        marsRover.executeCommands(command);
+
+        //then
+        assertEquals(0, marsRover.getLocationX());
+        assertEquals(0, marsRover.getLocationY());
+        assertEquals("W", marsRover.getHeading());
+    }
+
+    @Test
     void should_x_0_y_0_heading_N_return_x_1_y_0_heading_N_given_MLMR() {
         //given
         MarsRover marsRover = new MarsRover(0, 0, "N");
