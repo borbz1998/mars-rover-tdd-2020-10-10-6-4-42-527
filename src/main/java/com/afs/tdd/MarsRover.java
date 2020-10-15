@@ -52,6 +52,9 @@ public class MarsRover {
         else if (heading == "E"){
             heading = "N";
         }
+        else if (heading == "W"){
+            heading = "S";
+        }
     }
 
     public void move() {
