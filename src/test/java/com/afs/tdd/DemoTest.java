@@ -184,7 +184,7 @@ class DemoTest {
         assertEquals(0, marsRover.getLocationY());
         assertEquals("N", marsRover.getHeading());
     }
-
+    
     @Test
     void should_x_0_y_0_heading_N_return_x_1_y_0_heading_N_given_MLMR() {
         //given
@@ -196,7 +196,7 @@ class DemoTest {
 
         //then
         assertEquals(-1, marsRover.getLocationX());
-        assertEquals(0, marsRover.getLocationY());
+        assertEquals(1, marsRover.getLocationY());
         assertEquals("N", marsRover.getHeading());
     }
 }
