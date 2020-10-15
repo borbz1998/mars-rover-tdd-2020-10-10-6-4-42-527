@@ -34,6 +34,9 @@ public class MarsRover {
         if (heading == "N"){
             heading = "E";
         }
+        if (heading == "S"){
+            heading = "W";
+        }
     }
 
     private void turnLeft() {
