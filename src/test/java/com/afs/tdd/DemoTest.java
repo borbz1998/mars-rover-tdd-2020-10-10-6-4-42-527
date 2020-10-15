@@ -66,7 +66,7 @@ class DemoTest {
     }
 
     @Test
-    void should_x_0_y_1_heading_S_when_execute_given_x_0_y_0_heading_S_command_L() {
+    void should_x_0_y_0_heading_E_when_execute_given_x_0_y_0_heading_S_command_L() {
         //given
         MarsRover marsRover = new MarsRover(0, 0, "S");
 
@@ -78,6 +78,21 @@ class DemoTest {
         assertEquals(0, marsRover.getLocationX());
         assertEquals(0, marsRover.getLocationY());
         assertEquals("E", marsRover.getHeading());
+    }
+
+    @Test
+    void should_x_0_y_0_heading_W_when_execute_given_x_0_y_0_heading_S_command_R() {
+        //given
+        MarsRover marsRover = new MarsRover(0, 0, "S");
+
+        //when
+        String command = "R";
+        marsRover.executeCommands(command);
+
+        //then
+        assertEquals(0, marsRover.getLocationX());
+        assertEquals(0, marsRover.getLocationY());
+        assertEquals("W", marsRover.getHeading());
     }
 
     @Test
