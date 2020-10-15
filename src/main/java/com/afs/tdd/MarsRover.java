@@ -22,10 +22,10 @@ public class MarsRover {
         if(command.equals("M")){
             move();
         }
-        if(command.equals("L")){
+        else if(command.equals("L")){
             turnLeft();
         }
-        if(command.equals("R")){
+        else if(command.equals("R")){
             turnRight();
         }
     }
@@ -34,10 +34,10 @@ public class MarsRover {
         if (heading == "N"){
             heading = "E";
         }
-        if (heading == "S"){
+        else if (heading == "S"){
             heading = "W";
         }
-        if (heading == "E"){
+        else if (heading == "E"){
             heading = "S";
         }
     }
@@ -46,10 +46,10 @@ public class MarsRover {
         if (heading == "N"){
             heading = "W";
         }
-        if (heading == "S"){
+        else if (heading == "S"){
             heading = "E";
         }
-        if (heading == "E"){
+        else if (heading == "E"){
             heading = "N";
         }
     }
@@ -58,10 +58,10 @@ public class MarsRover {
         if (heading == "N"){
             locationY += 1;
         }
-        if (heading == "S"){
+        else if (heading == "S"){
             locationY -= 1;
         }
-        if (heading == "E"){
+        else if (heading == "E"){
             locationX += 1;
         }
     }
