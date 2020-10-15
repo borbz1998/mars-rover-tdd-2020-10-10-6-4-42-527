@@ -3,8 +3,8 @@ package com.afs.tdd;
 import java.util.Arrays;
 
 public class MarsRover {
-    private final int locationX;
-    private final int locationY;
+    private int locationX;
+    private int locationY;
     private final String heading;
 
     public MarsRover(int locationX, int locationY, String heading) {
@@ -19,17 +19,26 @@ public class MarsRover {
     }
 
     private void executeCommand(String command) {
+        if(command == "M"){
+            move();
+        }
+    }
+
+    public void move() {
+        if (heading == "N"){
+            locationY += 1;
+        }
     }
 
     public int getLocationX() {
-        return 0;
+        return locationX;
     }
 
     public int getLocationY() {
-        return 0;
+        return locationY;
     }
 
     public String getHeading() {
-        return "N";
+        return heading;
     }
 }
