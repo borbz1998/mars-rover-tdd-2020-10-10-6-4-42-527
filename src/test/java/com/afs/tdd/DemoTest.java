@@ -71,7 +71,7 @@ class DemoTest {
         MarsRover marsRover = new MarsRover(0, 0, "S");
 
         //when
-        String command = "M";
+        String command = "L";
         marsRover.executeCommands(command);
 
         //then
