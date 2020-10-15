@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MarsRover {
     private int locationX;
     private int locationY;
-    private final String heading;
+    private String heading;
 
     public MarsRover(int locationX, int locationY, String heading) {
         this.locationX = locationX;
@@ -19,8 +19,17 @@ public class MarsRover {
     }
 
     private void executeCommand(String command) {
-        if(command == "M"){
+        if(command.equals("M")){
             move();
+        }
+        if(command.equals("L")){
+            turnLeft();
+        }
+    }
+
+    private void turnLeft() {
+        if (heading == "N"){
+            heading = "W";
         }
     }
 
