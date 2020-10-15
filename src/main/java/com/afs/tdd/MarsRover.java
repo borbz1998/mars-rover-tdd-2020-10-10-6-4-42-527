@@ -22,14 +22,14 @@ public class MarsRover {
     }
 
     public int getLocationX() {
-        return locationX;
+        return 0;
     }
 
     public int getLocationY() {
-        return locationY;
+        return 0;
     }
 
     public String getHeading() {
-        return heading;
+        return "N";
     }
 }
