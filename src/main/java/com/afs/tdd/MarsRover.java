@@ -55,6 +55,9 @@ public class MarsRover {
         if (heading == "S"){
             locationY -= 1;
         }
+        if (heading == "E"){
+            locationX += 1;
+        }
     }
 
     public int getLocationX() {
