@@ -91,5 +91,4 @@ public class MarsRover {
     public String getHeading() {
         return heading;
     }
-
 }

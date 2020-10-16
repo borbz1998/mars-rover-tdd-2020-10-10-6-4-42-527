@@ -224,5 +224,4 @@ class DemoTest {
         //then
         assertThrows(CommandNotDefinedException.class, () -> marsRover.executeCommand(command));
     }
-
 }
