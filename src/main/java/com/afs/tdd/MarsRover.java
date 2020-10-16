@@ -3,6 +3,14 @@ package com.afs.tdd;
 import java.util.Arrays;
 
 public class MarsRover {
+
+    private static final String MOVE = "M";
+    private static final String TURN_LEFT = "L";
+    private static final String TURN_RIGHT = "R";
+    private static final String NORTH = "N";
+    private static final String SOUTH = "S";
+    private static final String EAST = "E";
+    private static final String WEST = "W";
     private int locationX;
     private int locationY;
     private String heading;
@@ -25,11 +33,11 @@ public class MarsRover {
     }
 
     public void executeCommand(String command) throws CommandNotDefinedException {
-        if (command.equals("M")) {
+        if (command.equals(MOVE)) {
             move();
-        } else if (command.equals("L")) {
+        } else if (command.equals(TURN_LEFT)) {
             turnLeft();
-        } else if (command.equals("R")) {
+        } else if (command.equals(TURN_RIGHT)) {
             turnRight();
         } else {
             throw new CommandNotDefinedException(command);
@@ -37,26 +45,26 @@ public class MarsRover {
     }
 
     private void turnRight() {
-        if (heading.equals("N")) {
-            heading = "E";
-        } else if (heading.equals("S")) {
-            heading = "W";
-        } else if (heading.equals("E")) {
-            heading = "S";
-        } else if (heading.equals("W")) {
-            heading = "N";
+        if (heading.equals(NORTH)) {
+            heading = EAST;
+        } else if (heading.equals(SOUTH)) {
+            heading = WEST;
+        } else if (heading.equals(EAST)) {
+            heading = SOUTH;
+        } else if (heading.equals(WEST)) {
+            heading = NORTH;
         }
     }
 
     private void turnLeft() {
-        if (heading.equals("N")) {
-            heading = "W";
-        } else if (heading.equals("S")) {
-            heading = "E";
-        } else if (heading.equals("E")) {
-            heading = "N";
-        } else if (heading.equals("W")) {
-            heading = "S";
+        if (heading.equals(NORTH)) {
+            heading = WEST;
+        } else if (heading.equals(SOUTH)) {
+            heading = EAST;
+        } else if (heading.equals(EAST)) {
+            heading = NORTH;
+        } else if (heading.equals(WEST)) {
+            heading = SOUTH;
         }
     }
 
