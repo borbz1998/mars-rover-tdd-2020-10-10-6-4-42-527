@@ -1,6 +1,9 @@
-package com.afs.tdd;
+package MarsRoverMovement;
 
-public class TurnRight implements IExecuteCommand{
+import Interface.IExecuteCommand;
+import Interface.IMarsRoverCommand;
+
+public class TurnRight implements IExecuteCommand {
     private IMarsRoverCommand iMarsRoverCommand;
 
     public TurnRight(IMarsRoverCommand iMarsRoverCommand) {

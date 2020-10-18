@@ -1,9 +1,12 @@
-package com.afs.tdd;
+package MarsRoverMovement;
 
-public class Move implements IExecuteCommand{
+import Interface.IExecuteCommand;
+import Interface.IMarsRoverCommand;
+
+public class Fly implements IExecuteCommand {
     private IMarsRoverCommand iMarsRoverCommand;
 
-    public Move(IMarsRoverCommand iMarsRoverCommand) {
+    public Fly(IMarsRoverCommand iMarsRoverCommand) {
         this.iMarsRoverCommand = iMarsRoverCommand;
     }
 
@@ -14,6 +17,6 @@ public class Move implements IExecuteCommand{
 
     @Override
     public void unExecute() {
-        this.iMarsRoverCommand.moveBackwards();
+        this.iMarsRoverCommand.move();
     }
 }

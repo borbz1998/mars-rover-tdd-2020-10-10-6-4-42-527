@@ -1,6 +1,9 @@
 package com.afs.tdd;
 
-import org.junit.jupiter.api.BeforeEach;
+import MarsRoverMovement.Fly;
+import MarsRoverMovement.Move;
+import MarsRoverMovement.TurnLeft;
+import MarsRoverMovement.TurnRight;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -220,5 +223,6 @@ class DemoTest {
 
         //then
         assertThrows(CommandNotDefinedException.class, () -> marsRover.executeCommands(application.process()));
+        
     }
 }

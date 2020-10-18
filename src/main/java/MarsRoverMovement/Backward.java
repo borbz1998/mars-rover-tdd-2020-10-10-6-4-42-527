@@ -1,4 +1,7 @@
-package com.afs.tdd;
+package MarsRoverMovement;
+
+import Interface.IExecuteCommand;
+import Interface.IMarsRoverCommand;
 
 public class Backward implements IExecuteCommand {
     private IMarsRoverCommand iMarsRoverCommand;

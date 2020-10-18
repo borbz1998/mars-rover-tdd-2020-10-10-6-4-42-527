@@ -1,11 +1,17 @@
 package com.afs.tdd;
 
+import Interface.IExecuteCommand;
+import Interface.IMarsRoverCommand;
+import MarsRoverMovement.Move;
+import MarsRoverMovement.TurnLeft;
+import MarsRoverMovement.TurnRight;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MarsRover implements IMarsRoverCommand{
+public class MarsRover implements IMarsRoverCommand {
 
     private static final String MOVE = "M";
     private static final String TURN_LEFT = "L";
@@ -27,25 +33,9 @@ public class MarsRover implements IMarsRoverCommand{
         this.heading = heading;
     }
 
-    // TODO: 10/16/2020 Change try and catch to throws CommandNotDefinedException
-//    public void executeCommands(String commands) throws CommandNotDefinedException{
-//        for (String command : commands.split("")){
-//            executeCommand(command);
-//        }
-//    }
-
-//    private void executeCommands(List<IExecuteCommand> commandList) {
-//        commandList.forEach(iExecuteCommand -> {
-//            if(!validCommands.contains(iExecuteCommand.getClass())){
-//                invalidCommands.add(iExecuteCommand);
-//                throw new CommandNotDefinedException();
-//            }
-//        });
-//    }
-
     public void executeCommands(List<IExecuteCommand> commandList) throws CommandNotDefinedException {
-        for (IExecuteCommand command: commandList) {
-            if(!validCommands.contains(command.getClass())){
+        for (IExecuteCommand command : commandList) {
+            if (!validCommands.contains(command.getClass())) {
                 invalidCommands.add(command);
                 throw new CommandNotDefinedException();
             }
