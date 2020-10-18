@@ -1,8 +1,11 @@
 package com.afs.tdd;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-public class MarsRover {
+public class MarsRover implements IMarsRoverCommand{
 
     private static final String MOVE = "M";
     private static final String TURN_LEFT = "L";
@@ -15,21 +18,43 @@ public class MarsRover {
     private int locationY;
     private String heading;
 
+    private static final List<Class> validCommands = Collections.unmodifiableList(Arrays.asList(Move.class, TurnLeft.class, TurnRight.class));
+    private List<IExecuteCommand> invalidCommands = new ArrayList<>();
+
     public MarsRover(int locationX, int locationY, String heading) {
         this.locationX = locationX;
         this.locationY = locationY;
         this.heading = heading;
     }
 
-    public void executeCommands(String commands) {
-        Arrays.asList(commands.split("")).
-                forEach(command -> {
-                    try {
-                        this.executeCommand(command);
-                    } catch (CommandNotDefinedException e) {
-                        e.printStackTrace();
-                    }
-                });
+    // TODO: 10/16/2020 Change try and catch to throws CommandNotDefinedException
+//    public void executeCommands(String commands) throws CommandNotDefinedException{
+//        for (String command : commands.split("")){
+//            executeCommand(command);
+//        }
+//    }
+
+//    private void executeCommands(List<IExecuteCommand> commandList) {
+//        commandList.forEach(iExecuteCommand -> {
+//            if(!validCommands.contains(iExecuteCommand.getClass())){
+//                invalidCommands.add(iExecuteCommand);
+//                throw new CommandNotDefinedException();
+//            }
+//        });
+//    }
+
+    public void executeCommands(List<IExecuteCommand> commandList) throws CommandNotDefinedException {
+        for (IExecuteCommand command: commandList) {
+            if(!validCommands.contains(command.getClass())){
+                invalidCommands.add(command);
+                throw new CommandNotDefinedException();
+            }
+            command.execute();
+        }
+    }
+
+    public void unExecuteCommand(List<IExecuteCommand> commandList) {
+        commandList.forEach(IExecuteCommand::unExecute);
     }
 
     public void executeCommand(String command) throws CommandNotDefinedException {
@@ -40,35 +65,12 @@ public class MarsRover {
         } else if (command.equals(TURN_RIGHT)) {
             turnRight();
         } else {
-            throw new CommandNotDefinedException(command);
+            throw new CommandNotDefinedException();
         }
     }
 
-    private void turnRight() {
-        if (heading.equals(NORTH)) {
-            heading = EAST;
-        } else if (heading.equals(SOUTH)) {
-            heading = WEST;
-        } else if (heading.equals(EAST)) {
-            heading = SOUTH;
-        } else if (heading.equals(WEST)) {
-            heading = NORTH;
-        }
-    }
-
-    private void turnLeft() {
-        if (heading.equals(NORTH)) {
-            heading = WEST;
-        } else if (heading.equals(SOUTH)) {
-            heading = EAST;
-        } else if (heading.equals(EAST)) {
-            heading = NORTH;
-        } else if (heading.equals(WEST)) {
-            heading = SOUTH;
-        }
-    }
-
-    private void move() {
+    @Override
+    public void move() {
         if (heading.equals(NORTH)) {
             locationY += 1;
         } else if (heading.equals(SOUTH)) {
@@ -80,6 +82,46 @@ public class MarsRover {
         }
     }
 
+    @Override
+    public void turnLeft() {
+        if (heading.equals(NORTH)) {
+            heading = WEST;
+        } else if (heading.equals(SOUTH)) {
+            heading = EAST;
+        } else if (heading.equals(EAST)) {
+            heading = NORTH;
+        } else if (heading.equals(WEST)) {
+            heading = SOUTH;
+        }
+    }
+
+    @Override
+    public void turnRight() {
+        if (heading.equals(NORTH)) {
+            heading = EAST;
+        } else if (heading.equals(SOUTH)) {
+            heading = WEST;
+        } else if (heading.equals(EAST)) {
+            heading = SOUTH;
+        } else if (heading.equals(WEST)) {
+            heading = NORTH;
+        }
+    }
+
+    @Override
+    public void moveBackwards() {
+        if (heading.equals(NORTH)) {
+            locationY -= 1;
+        } else if (heading.equals(SOUTH)) {
+            locationY += 1;
+        } else if (heading.equals(EAST)) {
+            locationX -= 1;
+        } else if (heading.equals(WEST)) {
+            locationX += 1;
+        }
+    }
+
+    // TODO: 10/16/2020  ENUM or Object to extract location
     public int getLocationX() {
         return locationX;
     }
@@ -88,6 +130,7 @@ public class MarsRover {
         return locationY;
     }
 
+    // TODO: 10/16/2020  Used Object to extract direction
     public String getHeading() {
         return heading;
     }
